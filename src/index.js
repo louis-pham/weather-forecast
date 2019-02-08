@@ -1,12 +1,64 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const API="http://api.openweathermap.org/data/2.5/forecast?&APPID=86cd9d99627d84adb18f059ebe3d35f7";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cities: [
+        { name: "Yokohama", id: "1848354", },
+        { name: "Toronto", id: "6167865", },
+      ],
+      isLoaded: false,
+      data: null,
+      error: null,
+    };
+  }
+
+  componentDidMount() {
+    const callUrl = API + "&id=" + this.state.cities[0].id;
+    fetch(callUrl)
+      .then(response => response.json())
+      .then(
+        data => {
+          this.setState({
+            isLoaded: true,
+            data: data,
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        });
+  }
+
+  render() {
+    const { error, isLoaded, data } = this.state;
+    if (error) {
+      return (
+        <div>{JSON.stringify(error)}</div>
+      );
+    }
+    if (isLoaded) {
+      return (
+        <div>{JSON.stringify(data)}</div>
+      );
+    } else {
+      return (
+        <div>Whatup bi</div>
+      );
+    }
+  }
+}
+
+ReactDOM.render(
+  <div class="container">
+    <App />
+  </div>,
+  document.querySelector('#root')
+);
