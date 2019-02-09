@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { APPID } from './appid.js';
 
+const API = "https://api.openweathermap.org/data/2.5/forecast?appid=" + APPID;
 
 function ForecastDisplay(props) {
   const cityName = props.cityName;
