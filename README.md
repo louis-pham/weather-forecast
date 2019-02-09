@@ -4,6 +4,8 @@ A React app for displaying a weather forecast.
 
 Experimenting with fetching data from 3rd-party APIs.
 
+An APP ID (from [OpenWeatherMap](https://openweathermap.org/)) will need to be obtained and put in index.js if you wish to use this yourself.
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
