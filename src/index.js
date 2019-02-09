@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { APPID } from './appid.js';
 
-const API="http://api.openweathermap.org/data/2.5/forecast?&APPID=86cd9d99627d84adb18f059ebe3d35f7";
+const API="http://api.openweathermap.org/data/2.5/forecast?&APPID=" + APPID;
 
 class App extends React.Component {
   constructor(props) {

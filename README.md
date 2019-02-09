@@ -1,6 +1,6 @@
 # Weather forecast
 
-A React app used to display a weather forecast.
+A React app for displaying a weather forecast.
 
 Experimenting with fetching data from 3rd-party APIs.
 
