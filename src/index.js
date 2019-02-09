@@ -2,37 +2,98 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { APPID } from './appid.js';
+import { Line } from 'react-chartjs-2';
 
-const API = "https://api.openweathermap.org/data/2.5/forecast?appid=" + APPID;
+const API = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" + APPID;
 
 function ForecastDisplay(props) {
-  const cityName = props.cityName;
-  const { cnt, list } = props.data;
-  const { dt, main, weather, clouds, wind, rain } = list[0];
-  const dateTime = new Date(dt * 1000);
-  const { temp, temp_min, temp_max } = main;
-  const { id, main: weatherMain, description, icon } = weather[0];
-  const weatherIcon = "http://openweathermap.org/img/w/" + icon + ".png";
 
-  return (
-    <div>
-      <img src={weatherIcon} style={{float: "right"}}></img>
-      <ul>
-        <li>{cityName}</li>
-        <li>{cnt}</li>
-        <li>Datetime: {dateTime.toString()}</li>
-        <li>Weather:
-          <ul>
-            <li>[{id}] {weatherMain} -- {description}</li>
-            <li>Current: {temp}</li>
-            <li>Min: {temp_min}</li>
-            <li>Max: {temp_max}</li>
-          </ul>
-        </li>
-      </ul>
-      <p>{JSON.stringify(list[0])}</p>
-    </div>
+  const { list } = props.data;
+  const { name: cityName, id: cityId } = props.data.city;
+  let contents = [
+    <h1 key={cityId}>{cityName}</h1>
+  ];
+  let forecasts = [];
+  let temperatures = [];
+
+  for (let i=0; i<=8;i++ ) { // 24hr forecast
+    let { dt, main, weather } = list[i];
+    let dateTime = new Date(dt * 1000);
+    let { temp } = main;
+    let { main: weatherMain, description, icon } = weather[0];
+    let weatherIcon = "http://openweathermap.org/img/w/" + icon + ".png";
+
+    temperatures.push(temp);
+
+    forecasts.push({
+      key: i,
+      dateTime: dateTime,
+      temperature: temp,
+      weather: weatherMain,
+      description: description,
+      icon: weatherIcon,
+    });
+    contents.push(
+      <div key={i}>
+        <img src={weatherIcon} style={{float: "right"}}></img>
+        <ul>
+          <li>Datetime: {dateTime.toString()}</li>
+          <li>Weather:
+            <ul>
+              <li>{weatherMain} -- {description}</li>
+              <li>Current: {temp}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+
+  const options = {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Temperature"
+        },
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Time"
+        },
+      }],
+    },
+
+  };
+
+  contents.push(
+    <Line
+      key={"f2"}
+      height={"80"}
+      data={
+        {
+          labels: ["never", "gonna", "give", "you", "up","never", "gonna", "let", "you", "down"],
+          datasets: [
+            {
+              label: "Temperature",
+              lineTension: 0.25,
+              fill: false,
+              backgroundColor: 'rgba(151,187,205,1)',
+              borderColor: 'rgba(151,187,205,1)',
+              pointBackgroundColor: 'rgba(151,187,205,1)',
+              pointStrokeColor: '#fff',
+              pointHighlightFill: '#fff',
+              pointHighlightStroke: 'rgba(151,187,205,1)',
+              data: temperatures,
+            }
+          ]
+        }
+      }
+      options={options}
+    />
   );
+  return contents;
 }
 
 class App extends React.Component {
@@ -50,7 +111,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const callUrl = API + "&id=" + this.state.cities[0].id;
+    const cityId = this.state.cities[0].id
+    const callUrl = API + "&id=" + cityId;
     fetch(callUrl)
       .then(response => response.json())
       .then(
@@ -72,19 +134,23 @@ class App extends React.Component {
     const { error, isLoaded, data } = this.state;
     if (error) {
       return (
-        <div>{JSON.stringify(error)}</div>
+        <div>
+          <h3>oopsie</h3>
+          {JSON.stringify(error)}
+        </div>
       );
     }
     if (isLoaded) {
-      return (
+      return ([
         <ForecastDisplay
+          key={"f1"}
           data={data}
-          cityName={"Yokohama"}
-        />
+        />,
+      ]
       );
     } else {
       return (
-        <div>Whatup bi</div>
+        <div>Loading...</div>
       );
     }
   }
