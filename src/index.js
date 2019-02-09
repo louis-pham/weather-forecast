@@ -1,9 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { APPID } from './appid.js';
 
-const API = "http://api.openweathermap.org/data/2.5/forecast?&APPID=" + APPID;
+
+function ForecastDisplay(props) {
+  const cityName = props.cityName;
+  const { cnt, list } = props.data;
+  const { dt, main, weather, clouds, wind, rain } = list[0];
+  const dateTime = new Date(dt * 1000);
+  const { temp, temp_min, temp_max } = main;
+  const { id, main: weatherMain, description, icon } = weather[0];
+  const weatherIcon = "http://openweathermap.org/img/w/" + icon + ".png";
+
+  return (
+    <div>
+      <img src={weatherIcon} style={{float: "right"}}></img>
+      <ul>
+        <li>{cityName}</li>
+        <li>{cnt}</li>
+        <li>Datetime: {dateTime.toString()}</li>
+        <li>Weather:
+          <ul>
+            <li>[{id}] {weatherMain} -- {description}</li>
+            <li>Current: {temp}</li>
+            <li>Min: {temp_min}</li>
+            <li>Max: {temp_max}</li>
+          </ul>
+        </li>
+      </ul>
+      <p>{JSON.stringify(list[0])}</p>
+    </div>
+  );
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +75,10 @@ class App extends React.Component {
     }
     if (isLoaded) {
       return (
-        <div>{JSON.stringify(data)}</div>
+        <ForecastDisplay
+          data={data}
+          cityName={"Yokohama"}
+        />
       );
     } else {
       return (
@@ -58,7 +89,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <div class="container">
+  <div className="container">
     <App />
   </div>,
   document.querySelector('#root')
