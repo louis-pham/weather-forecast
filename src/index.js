@@ -16,6 +16,9 @@ class App extends React.Component {
 
   render() {
     return ([
+      <div>
+        <h1>Weather Forecast</h1>
+      </div>,
       <ForecastDisplay
         key={this.state.cities[0].id}
         cityId={this.state.cities[0].id}
@@ -28,6 +31,7 @@ class App extends React.Component {
         cityName={this.state.cities[1].name}
         timeZone={this.state.cities[1].timeZone}
       />,
+      <footer><a target="_blank" href="https://github.com/louis-pham">Louis Pham</a></footer>
     ]
     );
   }

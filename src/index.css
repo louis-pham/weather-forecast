@@ -14,17 +14,36 @@ code {
     monospace;
 }
 
+h1 {
+  color: rgb(233, 233, 241);
+  color: rgba(255, 255, 255, .9);
+  padding: 0 20px;
+  font-size: 4em;
+}
+
+footer {
+  color: white;
+  background-color: #090a2b;
+  padding: 20px;
+  text-align: right;
+}
+
+a {
+  color: white;
+}
+
+a:visited {
+  color: #987ca2;
+}
+
 .forecast-display {
   color: white;
+  background-color: rgb(26, 26, 34);
   background-color: rgba(25, 25, 25, .9);
   padding: 20px;
   margin: 30px 35px;
   border-radius: 20px;
-  box-shadow: black 3px 3px 9px 0px;
-}
-
-h1 {
-  color: rgba(255, 255, 255, .9);
-  padding: 0 20px;
-  font-size: 4em;
+  box-shadow: black 3px 3px 9px 0;
+  font-size: 0.8em;
+  text-align: center;
 }
