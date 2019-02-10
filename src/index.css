@@ -6,9 +6,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #202271;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.forecast-display {
+  color: white;
+  background-color: rgba(25, 25, 25, .9);
+  padding: 20px;
+  margin: 30px 35px;
+  border-radius: 20px;
+  box-shadow: black 3px 3px 9px 0px;
+}
+
+h1 {
+  color: rgba(255, 255, 255, .9);
+  padding: 0 20px;
+  font-size: 4em;
 }
