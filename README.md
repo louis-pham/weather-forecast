@@ -4,6 +4,8 @@ A React app for displaying a weather forecast.
 
 Experimenting with fetching data from 3rd-party APIs.
 
+Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/).
+
 You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org/)) to use for your own copy. The ForecastDisplay file imports the "APPID" variable from a separate file named "appid.js" which is just a simple variable declaration and export.
 
 ## Issues
