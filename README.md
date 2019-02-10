@@ -4,7 +4,10 @@ A React app for displaying a weather forecast.
 
 Experimenting with fetching data from 3rd-party APIs.
 
-An APP ID (from [OpenWeatherMap](https://openweathermap.org/)) will need to be obtained and put in index.js if you wish to use this yourself.
+You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org/)) to use for your own copy. The ForecastDisplay file imports the "APPID" variable from a separate file named "appid.js" which is just a simple variable declaration and export.
+
+## Issues
+- timezone in x-axis label wont display on Internet Explorer
 
 ---
 
