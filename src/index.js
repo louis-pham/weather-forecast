@@ -31,14 +31,14 @@ class App extends React.Component {
         cityName={this.state.cities[1].name}
         timeZone={this.state.cities[1].timeZone}
       />,
-      <footer><a target="_blank" href="https://github.com/louis-pham">Louis Pham</a></footer>
+      <footer><a target="_blank" rel="noopener noreferrer" href="https://github.com/louis-pham">Louis Pham</a></footer>
     ]
     );
   }
 }
 
 ReactDOM.render(
-  <div className="container">
+  <div key="0" className="container">
     <App />
   </div>,
   document.querySelector('#root')

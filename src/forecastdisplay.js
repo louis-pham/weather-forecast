@@ -37,7 +37,7 @@ class ForecastDisplay extends React.Component {
   }
 
   render() {
-    let toRender = [<h1 key={this.cityName}>{this.cityName}</h1>];
+    let toRender = [<h1 key={this.cityName} className="city-name">{this.cityName}</h1>];
     if (this.state.isLoaded) {
       let temperatures = [];
       let labels = [];
@@ -45,7 +45,8 @@ class ForecastDisplay extends React.Component {
       for (let i=0; i<=12;i++ ) { // 36hr forecast
         const { dt, main, weather } = this.state.data[i];
         const { temp } = main;
-        const { icon } = weather[0];
+        const { icon, description: weatherDescription } = weather[0];
+        console.log(weather);
         if (i === 0) {
           // get short version of timezone
           timeZoneName = Intl.DateTimeFormat('en-US',
@@ -53,6 +54,15 @@ class ForecastDisplay extends React.Component {
               timeZone: this.timeZone,
               timeZoneName: "short"
             }).format().split(",")[1];
+
+          toRender.push(
+            <div className="current-weather">
+              <span className="now">Now</span>
+              <span className="temperature">{temp}&deg;C</span>
+              <span className="weather-description">{weatherDescription}</span>
+              <img className="weather-icon" src={"http://openweathermap.org/img/w/" + icon + ".png"} alt="current weather icon"/>
+            </div>
+          );
         }
         // let weatherIcon = "http://openweathermap.org/img/w/" + icon + ".png";
 
