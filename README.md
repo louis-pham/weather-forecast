@@ -10,6 +10,7 @@ You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org
 
 ## Issues
 - timezone in x-axis label wont display on Internet Explorer
+- basically unreadable on smaller displays
 
 ---
 
