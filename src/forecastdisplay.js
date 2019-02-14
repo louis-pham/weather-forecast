@@ -60,8 +60,8 @@ class ForecastDisplay extends React.Component {
               <span className="now">Now</span>
               <span className="temperature">{temp}&deg;C</span>
               <span className="weather-description">{weatherDescription}</span>
-              <img className="weather-icon" src={"http://openweathermap.org/img/w/" + icon + ".png"} alt="current weather icon"/>
-            </div>
+            </div>,
+            <img className="weather-icon" src={"http://openweathermap.org/img/w/" + icon + ".png"} alt="current weather icon"/>
           );
         }
         // let weatherIcon = "http://openweathermap.org/img/w/" + icon + ".png";
