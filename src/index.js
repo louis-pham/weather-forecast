@@ -8,27 +8,43 @@ class App extends React.Component {
     super(props);
     this.state = {
       cities: [
-        { name: "Yokohama", id: "1848354", timeZone: "Asia/Tokyo", },
-        { name: "Toronto", id: "6167865", timeZone: "America/Toronto", },
+        { name: "Yokohama", country: "Japan", id: "1848354", timeZone: "Asia/Tokyo", },
+        { name: "Toronto", country: "Canada", id: "6167865", timeZone: "America/Toronto", },
       ],
+      currentTime: "",
     };
+  }
+
+  setTime() {
+    this.setState({
+      currentTime: new Date().toLocaleString("en-US"),
+    });
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setTime()
+    }, 1000);
   }
 
   render() {
     return ([
-      <div>
+      <div key="header">
         <h1>Weather Forecast</h1>
+        <h2 className="clock">{this.state.currentTime}</h2>
       </div>,
       <ForecastDisplay
         key={this.state.cities[0].id}
         cityId={this.state.cities[0].id}
         cityName={this.state.cities[0].name}
+        country={this.state.cities[0].country}
         timeZone={this.state.cities[0].timeZone}
       />,
       <ForecastDisplay
         key={this.state.cities[1].id}
         cityId={this.state.cities[1].id}
         cityName={this.state.cities[1].name}
+        country={this.state.cities[1].country}
         timeZone={this.state.cities[1].timeZone}
       />,
       <footer><a target="_blank" rel="noopener noreferrer" href="https://github.com/louis-pham">Louis Pham</a></footer>
@@ -38,7 +54,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <div key="0" className="container">
+  <div className="container">
     <App />
   </div>,
   document.querySelector('#root')

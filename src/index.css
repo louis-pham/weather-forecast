@@ -21,9 +21,13 @@ h1 {
   font-size: 7vw;
 }
 
+small {
+  color: grey;
+}
+
 footer {
   color: white;
-  background-color: #090a2b;
+  background-color: #1b1313;
   padding: 20px;
   text-align: right;
 }
@@ -58,11 +62,23 @@ a:visited {
   font-size: 0.8vw;
 }
 
+.clock {
+  color: #ffe3e3;
+  text-align: right;
+  padding: 0 33px;
+  font-size: 3.5vw;
+}
+
 .now {
   font-size: 2em;
   font-weight: bold;
   text-align: left;
   display: block;
+}
+
+.last-updated {
+  float: left;
+  color: #7b7b7b;
 }
 
 .city-name {
@@ -86,4 +102,9 @@ a:visited {
   float: right;
   width: 8%;
   min-width: 20px;
+}
+
+.error-message {
+  color: red;
+  float: right;
 }

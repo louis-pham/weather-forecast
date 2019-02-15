@@ -6,8 +6,12 @@ Experimenting with fetching data from 3rd-party APIs.
 
 Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/).
 
-You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org/)) to use for your own copy. The ForecastDisplay file imports the "APPID" variable from a separate file named "appid.js" which is just a simple variable declaration and export.
+You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org/)) to use for your own copy. The ForecastDisplay component imports the "APPID" variable from a separate file named "appid.js" which is just a simple variable declaration and export.
+Example:
 
+```javascript
+export const APPID = "abcef123456foo7bar8";
+```
 ## Issues
 - timezone in x-axis label wont display on Internet Explorer
 - basically unreadable on smaller displays
