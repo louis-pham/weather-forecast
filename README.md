@@ -2,7 +2,11 @@
 
 A React app for displaying a weather forecast.
 
-Experimenting with fetching data from 3rd-party APIs.
+The main purpose for this was to further gain familiarity with React and fetching data from 3rd-party APIs. This uses chart.js to display the data on a graph.
+
+The application currently shows the weather forecast for Yokohama and Toronto. It displays a ~36 hour weather forecast in 3-hour increments, along with a weather icon, description, and current temperature (the current temperature is actually not the current, but just the temperature from the first data point). A live clock is also shown, along with the last time the data was updated. The time along the x-axis is shown in the city's respective timezone.
+
+An error message will display if the data cannot be retrieved initially. If the next API call fails then the current data will remain unchanged, but a small error in red text will appear in the bottom-right corner of the forecast.
 
 Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/).
 
@@ -12,7 +16,7 @@ Example:
 ```javascript
 export const APPID = "abcef123456foo7bar8";
 ```
-## Issues
+## Known Issues
 - timezone in x-axis label wont display on Internet Explorer
 - basically unreadable on smaller displays
 
