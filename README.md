@@ -1,14 +1,14 @@
 # Weather forecast
 
-A React app for displaying a weather forecast.
+A React app for displaying a weather forecast. 
+
+**Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/)**.
 
 The main purpose for this was to further gain familiarity with React and fetching data from 3rd-party APIs. This uses chart.js to display the data on a graph.
 
 The application currently shows the weather forecast for Yokohama and Toronto. It displays a 48-hour weather forecast in 3-hour increments, along with a weather icon, description, and current temperature. A live clock is also shown, along with the last time the data was updated. The time along the x-axis is shown in the city's respective timezone.
 
 An error message will display if the data cannot be retrieved initially. If the next API call fails then the current data will remain unchanged, but a small error in red text will appear in the bottom-right corner of the forecast.
-
-Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/).
 
 You can obtain your own APP ID (from [OpenWeatherMap](https://openweathermap.org/)) to use for your own copy. The ForecastDisplay component imports the "APPID" variable from a separate file named "appid.js" which is just a simple variable declaration and export.
 Example:
