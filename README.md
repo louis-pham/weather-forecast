@@ -1,6 +1,6 @@
 # Weather forecast
 
-A React app for displaying a weather forecast. 
+A React app for displaying a weather forecast.
 
 **Live demo can be found [here](http://weather-forecast.louis-pham.surge.sh/)**.
 
@@ -19,6 +19,8 @@ export const APPID = "abcef123456foo7bar8";
 ## Known Issues
 - timezone in x-axis label wont display on Internet Explorer
 - basically unreadable on smaller displays
+- no error display for current weather
+- city name extends out of container when data is yet to be loaded
 
 ---
 
