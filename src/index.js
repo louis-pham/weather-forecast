@@ -46,8 +46,7 @@ class App extends React.Component {
         cityName={this.state.cities[1].name}
         country={this.state.cities[1].country}
         timeZone={this.state.cities[1].timeZone}
-      />,
-      <footer><a target="_blank" rel="noopener noreferrer" href="https://github.com/louis-pham">Louis Pham</a></footer>
+      />
     ]
     );
   }
